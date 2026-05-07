@@ -118,3 +118,346 @@ section:not(.section-visible) .section-content-wrapper-center {
         padding: 5rem 1.5rem;
     }
 }
+
+/* New Layout Styles - Overlay Style for All Sections */
+.section-content-wrapper-new {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Layout Overlay - Gambar background dengan overlay */
+.layout-style-overlay {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.image-background-overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.35);
+    transition: all 0.5s ease;
+}
+
+.layout-style-overlay:hover .image-background-overlay img {
+    filter: brightness(0.45);
+    transform: scale(1.05);
+}
+
+.content-centered-overlay {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    text-align: center;
+    padding: 2rem;
+}
+
+.section-title-overlay {
+    font-size: 4.5rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: #e8dcc4;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
+    animation: fadeInDown 0.8s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-overlay {
+    background-color: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(201, 168, 124, 0.5);
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Base Text Preview Styles */
+.text-preview {
+    background-color: rgba(26, 26, 26, 0.6);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(201, 168, 124, 0.3);
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.text-preview:hover {
+    background-color: rgba(26, 26, 26, 0.9);
+    border-color: rgba(201, 168, 124, 0.8);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.text-preview p {
+    color: #d4d4d4;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin-bottom: 1.8rem;
+    text-align: center;
+}
+
+.read-more-btn {
+    background-color: transparent;
+    color: #c9a87c;
+    border: 2px solid #c9a87c;
+    padding: 0.9rem 2.5rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.read-more-btn:hover {
+    background-color: #c9a87c;
+    color: #1a1a1a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(201, 168, 124, 0.5);
+}
+
+/* Popup Styles */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease;
+}
+
+.popup-overlay.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.popup-content {
+    background-color: rgba(26, 26, 26, 0.95);
+    border: 2px solid rgba(201, 168, 124, 0.5);
+    border-radius: 12px;
+    max-width: 1000px;
+    width: 100%;
+    position: relative;
+    animation: slideUp 0.4s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    color: #c9a87c;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #e8dcc4;
+    transform: rotate(90deg);
+}
+
+.popup-body {
+    display: flex;
+    gap: 2rem;
+    padding: 3rem;
+}
+
+.popup-image {
+    flex: 1;
+    max-width: 400px;
+}
+
+.popup-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.popup-text {
+    flex: 1;
+    color: #d4d4d4;
+}
+
+.popup-text h2 {
+    font-size: 2.5rem;
+    color: #e8dcc4;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.popup-text h3 {
+    font-size: 1.5rem;
+    color: #c9a87c;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.popup-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* Responsive for New Layout */
+@media (max-width: 1024px) {
+    .section-title-overlay {
+        font-size: 3.5rem;
+        letter-spacing: 0.1em;
+    }
+
+    .layout-style-overlay {
+        min-height: 500px;
+    }
+
+    .content-centered-overlay {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+
+    .text-preview {
+        padding: 2rem;
+    }
+
+    .text-preview p {
+        font-size: 1.05rem;
+    }
+
+    .popup-body {
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    .popup-image {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title-overlay {
+        font-size: 2.5rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 1.5rem;
+    }
+
+    .layout-style-overlay {
+        min-height: 450px;
+    }
+
+    .content-centered-overlay {
+        padding: 1rem;
+    }
+
+    .text-preview {
+        padding: 1.5rem;
+    }
+
+    .text-preview p {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .read-more-btn {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .popup-text h2 {
+        font-size: 2rem;
+    }
+
+    .popup-body {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title-overlay {
+        font-size: 2rem;
+        letter-spacing: 0.05em;
+    }
+
+    .layout-style-overlay {
+        min-height: 400px;
+    }
+
+    .text-preview p {
+        font-size: 0.95rem;
+    }
+
+    .read-more-btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.85rem;
+    }
+}

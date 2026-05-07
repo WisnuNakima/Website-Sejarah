@@ -174,3 +174,37 @@ if (document.querySelector('.tentang-page')) {
         }
     });
 }
+
+// Popup Functions
+function openPopup(popupId) {
+    const popup = document.getElementById(popupId);
+    if (popup) {
+        popup.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when popup is open
+    }
+}
+
+function closePopup(popupId) {
+    const popup = document.getElementById(popupId);
+    if (popup) {
+        popup.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }
+}
+
+// Close popup when clicking outside the content
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('popup-overlay')) {
+        closePopup(e.target.id);
+    }
+});
+
+// Close popup with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const activePopup = document.querySelector('.popup-overlay.active');
+        if (activePopup) {
+            closePopup(activePopup.id);
+        }
+    }
+});
