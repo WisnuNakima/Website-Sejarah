@@ -1,0 +1,164 @@
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6rem 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 26, 26, 0.7);
+    z-index: -1;
+}
+
+.content-left {
+    flex: 1;
+    z-index: 10;
+}
+
+.title {
+    font-size: 7rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    color: #e8dcc4;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.presented-btn {
+    background-color: transparent;
+    color: #d4d4d4;
+    border: 2px solid #d4d4d4;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.presented-btn:hover {
+    background-color: #c9a87c;
+    border-color: #c9a87c;
+    color: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Image Gallery with Interactive Cards */
+.image-gallery {
+    flex: 1;
+    position: relative;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-card {
+    position: absolute;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Default Overlapping Positions */
+.card-1 {
+    width: 300px;
+    height: 400px;
+    right: 250px;
+    z-index: 3;
+}
+
+.card-2 {
+    width: 300px;
+    height: 350px;
+    right: 120px;
+    z-index: 2;
+}
+
+.card-3 {
+    width: 300px;
+    height: 320px;
+    right: 10px;
+    z-index: 1;
+}
+
+/* Hover Effects - Cards Rise and Separate */
+.image-card:hover {
+    transform: translateY(-30px) scale(1.05);
+    z-index: 10 !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+
+.image-gallery:hover .card-1:not(:hover) {
+    transform: translateX(-20px);
+}
+
+.image-gallery:hover .card-2:not(:hover) {
+    transform: translateX(0);
+}
+
+.image-gallery:hover .card-3:not(:hover) {
+    transform: translateX(20px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 6rem 2rem 2rem;
+    }
+
+    .title {
+        font-size: 5rem;
+    }
+
+    .image-gallery {
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 3.5rem;
+    }
+
+    .card-1 {
+        width: 240px;
+        height: 320px;
+        right: 180px;
+    }
+
+    .card-2 {
+        width: 240px;
+        height: 280px;
+        right: 90px;
+    }
+
+    .card-3 {
+        width: 240px;
+        height: 250px;
+        right: 10px;
+    }
+}

@@ -1,0 +1,85 @@
+/* Section 3 & 6: Problem Identification Layout */
+.section-problem {
+    transition: opacity 0.5s ease;
+}
+
+.section-title-center {
+    font-size: 4.5rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: #e8dcc4;
+    margin-bottom: 3rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.problem-cards {
+    display: flex;
+    gap: 3rem;
+    width: 100%;
+}
+
+.problem-card {
+    flex: 1;
+    border: 2px solid #c9a87c;
+    border-radius: 8px;
+    padding: 2.5rem;
+    background-color: rgba(26, 26, 26, 0.7);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.problem-card:hover {
+    background-color: rgba(26, 26, 26, 0.85);
+    border-color: #d4b896;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    transform: translateY(-5px);
+}
+
+.problem-card-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: #e8dcc4;
+    margin-bottom: 1rem;
+}
+
+.problem-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, #c9a87c, transparent);
+    margin: 1.5rem 0;
+}
+
+.problem-card p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #d4d4d4;
+    text-align: justify;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .section-title-center {
+        font-size: 3rem;
+    }
+
+    .problem-cards {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title-center {
+        font-size: 2.2rem;
+    }
+
+    .problem-card-title {
+        font-size: 2rem;
+    }
+
+    .problem-card p {
+        font-size: 1rem;
+    }
+}
