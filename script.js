@@ -40,7 +40,7 @@ if (document.querySelector('.materi-page')) {
         'bg.png',  // Section 2 - Project Process
         'koran.png',  // Section 3 - Problem Identification
         'rapat.png',  // Section 4 - Project Objectives
-        'image.png'   // Section 5 - Problem Identification
+        'semanggi 1.png'   // Section 5 - Problem Identification
     ];
 
     let currentBg = 0;
