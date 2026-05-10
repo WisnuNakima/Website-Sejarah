@@ -29,6 +29,65 @@ imageCards.forEach(card => {
     });
 });
 
+// Home Page: Scroll Indicator & Introduction Section Animation
+if (document.querySelector('.hero-section')) {
+    // Smooth scroll to introduction section when clicking scroll indicator
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            const introSection = document.querySelector('.intro-section');
+            if (introSection) {
+                introSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+
+    // Intersection Observer for introduction section animation (repeatable)
+    const introContainer = document.querySelector('.intro-container');
+    if (introContainer) {
+        const observerOptions = {
+            root: null,
+            threshold: 0.2,
+            rootMargin: '0px'
+        };
+
+        const introObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Tambahkan class visible saat masuk viewport
+                    entry.target.classList.add('visible');
+                } else {
+                    // Hapus class visible saat keluar viewport (agar bisa muncul lagi)
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, observerOptions);
+
+        introObserver.observe(introContainer);
+    }
+
+    // Hide scroll indicator when scrolling down
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollIndicator) {
+            if (scrollTop > 100) {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.pointerEvents = 'none';
+            } else {
+                scrollIndicator.style.opacity = '1';
+                scrollIndicator.style.pointerEvents = 'auto';
+            }
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+}
+
 // Materi Page: Scroll Animation & Background Change
 if (document.querySelector('.materi-page')) {
     const sections = document.querySelectorAll('section');
@@ -37,7 +96,7 @@ if (document.querySelector('.materi-page')) {
     // Background images untuk setiap section
     const backgrounds = [
         'kerusuhan.png',  // Section 1 - Background
-        'bg.png',  // Section 2 - Project Process
+        'section 2.png',  // Section 2 - Project Process
         'koran.png',  // Section 3 - Problem Identification
         'rapat.png',  // Section 4 - Project Objectives
         'semanggi 1.png'   // Section 5 - Problem Identification
@@ -126,14 +185,29 @@ if (document.querySelector('.materi-page')) {
     }
 }
 
-// Tentang Kami Page: Scroll Animation
+// Tentang Kami Page: Scroll Animation & Background Change
 if (document.querySelector('.tentang-page')) {
     const sections = document.querySelectorAll('section');
+    const tentangPage = document.querySelector('.tentang-page');
     
+    // Background images untuk setiap section
+    const backgrounds = [
+        'trisakti.png',      // Section 1 - Hero/About Us
+        'demo.png'           // Section 2 - Team
+    ];
+
+    let currentBg = 0;
+    let isScrolling = false;
+
+    // Set initial background
+    if (backgrounds[0]) {
+        tentangPage.style.backgroundImage = `url('${backgrounds[0]}')`;
+    }
+
     // Intersection Observer untuk scroll animation
     const observerOptions = {
         root: null,
-        threshold: 0.2,
+        threshold: 0.3,
         rootMargin: '0px'
     };
 
@@ -141,6 +215,13 @@ if (document.querySelector('.tentang-page')) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('section-visible');
+                
+                // Ubah background sesuai section
+                const sectionIndex = Array.from(sections).indexOf(entry.target);
+                if (sectionIndex !== -1 && sectionIndex !== currentBg && backgrounds[sectionIndex]) {
+                    changeBackground(sectionIndex);
+                    currentBg = sectionIndex;
+                }
             }
         });
     }, observerOptions);
@@ -149,6 +230,22 @@ if (document.querySelector('.tentang-page')) {
     sections.forEach(section => {
         sectionObserver.observe(section);
     });
+
+    // Function untuk mengubah background dengan smooth transition
+    function changeBackground(index) {
+        if (!isScrolling && backgrounds[index]) {
+            isScrolling = true;
+            
+            // Fade transition
+            tentangPage.style.transition = 'background-image 0.8s ease-in-out';
+            
+            // Change background
+            setTimeout(() => {
+                tentangPage.style.backgroundImage = `url('${backgrounds[index]}')`;
+                isScrolling = false;
+            }, 100);
+        }
+    }
 
     // Smooth parallax effect saat scroll
     let ticking = false;
