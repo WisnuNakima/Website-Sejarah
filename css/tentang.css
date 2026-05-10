@@ -1,10 +1,10 @@
 /* Tentang Kami Page Styles */
 .tentang-page {
-    background-image: url('../images/tentang-background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    transition: background-image 0.8s ease-in-out;
 }
 
 .tentang-background {
@@ -21,12 +21,15 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    margin: 0;
+    padding: 0;
 }
 
 /* Section Styles */
 section {
     min-height: 100vh;
-    padding: 8rem 4rem;
+    padding: 6rem 4rem;
+    margin: 0;
     position: relative;
     display: flex;
     align-items: center;
@@ -34,6 +37,15 @@ section {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Hilangkan padding bottom untuk section pertama dan padding top untuk section kedua */
+section:first-child {
+    padding-bottom: 0;
+}
+
+section:not(:first-child) {
+    padding-top: 0;
 }
 
 section.section-visible {
@@ -269,7 +281,6 @@ section.section-visible .team-card:nth-child(3) {
 .team-contact {
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid #c9a87c;
 }
 
 .team-email {
