@@ -8,13 +8,7 @@
 }
 
 .tentang-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(26, 26, 26, 0.75);
-    z-index: -1;
+    display: none;
 }
 
 .tentang-section {
@@ -39,13 +33,10 @@ section {
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* Hilangkan padding bottom untuk section pertama dan padding top untuk section kedua */
-section:first-child {
-    padding-bottom: 0;
-}
-
-section:not(:first-child) {
-    padding-top: 0;
+/* Section 2 (Team) needs more height for content */
+.about-team {
+    min-height: 100vh;
+    padding: 8rem 4rem;
 }
 
 section.section-visible {
@@ -57,10 +48,13 @@ section.section-visible {
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(26, 26, 26, 0.75);
     z-index: 0;
+    pointer-events: none;
 }
 
 /* Section 1: Hero */
@@ -75,13 +69,13 @@ section.section-visible {
     position: relative;
     z-index: 1;
     opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 1s ease, transform 1s ease;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 section.section-visible .about-hero-content {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
 }
 
 .about-title {
@@ -184,6 +178,14 @@ section.section-visible .about-hero-content {
     width: 100%;
     position: relative;
     z-index: 1;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.section-visible .team-content-wrapper {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .section-title-center {
