@@ -291,11 +291,13 @@ section:not(.section-visible) .section-content-wrapper-center {
     background-color: rgba(26, 26, 26, 0.95);
     border: 2px solid rgba(201, 168, 124, 0.5);
     border-radius: 12px;
-    max-width: 1000px;
+    max-width: 1100px;
+    max-height: 85vh;
     width: 100%;
     position: relative;
     animation: slideUp 0.4s ease;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
 }
 
 @keyframes slideUp {
@@ -310,9 +312,11 @@ section:not(.section-visible) .section-content-wrapper-center {
 }
 
 .close-btn {
-    position: absolute;
+    position: sticky;
     top: 1rem;
-    right: 1.5rem;
+    float: right;
+    margin-right: 1.5rem;
+    margin-top: 1rem;
     font-size: 2.5rem;
     color: #c9a87c;
     cursor: pointer;
@@ -327,28 +331,16 @@ section:not(.section-visible) .section-content-wrapper-center {
 }
 
 .popup-body {
-    display: flex;
-    gap: 2rem;
     padding: 3rem;
-}
-
-.popup-image {
-    flex: 0 0 350px;
-    max-width: 350px;
-}
-
-.popup-image img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 3px solid #c9a87c;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding-top: 1rem;
+    clear: both;
 }
 
 .popup-text {
-    flex: 1;
     color: #d4d4d4;
+    column-count: 2;
+    column-gap: 3rem;
+    column-rule: 1px solid rgba(201, 168, 124, 0.3);
 }
 
 .popup-text h2 {
@@ -356,19 +348,55 @@ section:not(.section-visible) .section-content-wrapper-center {
     color: #e8dcc4;
     margin-bottom: 1.5rem;
     letter-spacing: 0.05em;
+    column-span: all;
+    text-align: center;
 }
 
 .popup-text h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #c9a87c;
-    margin-top: 1.5rem;
-    margin-bottom: 0.8rem;
+    margin-top: 1.2rem;
+    margin-bottom: 0.6rem;
+    break-after: avoid;
 }
 
 .popup-text p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+    text-align: justify;
+}
+
+.popup-text ul {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    break-inside: avoid;
+}
+
+.popup-text li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.4rem;
+    color: #d4d4d4;
+}
+
+/* Custom scrollbar untuk popup */
+.popup-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.popup-content::-webkit-scrollbar-track {
+    background: rgba(26, 26, 26, 0.5);
+    border-radius: 10px;
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+    background: #c9a87c;
+    border-radius: 10px;
+}
+
+.popup-content::-webkit-scrollbar-thumb:hover {
+    background: #d4b896;
 }
 
 /* Responsive for New Layout */
@@ -395,13 +423,12 @@ section:not(.section-visible) .section-content-wrapper-center {
         font-size: 1.05rem;
     }
 
-    .popup-body {
-        flex-direction: column;
-        padding: 2rem;
+    .popup-text {
+        column-count: 1;
     }
 
-    .popup-image {
-        max-width: 100%;
+    .popup-body {
+        padding: 2rem;
     }
 }
 
@@ -435,8 +462,21 @@ section:not(.section-visible) .section-content-wrapper-center {
         font-size: 0.9rem;
     }
 
+    .popup-text {
+        column-count: 1;
+    }
+
     .popup-text h2 {
         font-size: 2rem;
+    }
+
+    .popup-text h3 {
+        font-size: 1.2rem;
+    }
+
+    .popup-text p,
+    .popup-text li {
+        font-size: 0.9rem;
     }
 
     .popup-body {
@@ -461,5 +501,17 @@ section:not(.section-visible) .section-content-wrapper-center {
     .read-more-btn {
         padding: 0.7rem 1.5rem;
         font-size: 0.85rem;
+    }
+
+    .popup-content {
+        max-height: 90vh;
+    }
+
+    .popup-body {
+        padding: 1rem;
+    }
+
+    .popup-text h2 {
+        font-size: 1.8rem;
     }
 }
